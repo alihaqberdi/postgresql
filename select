@@ -1,0 +1,259 @@
+SELECT * FROM users;
+SELECT user_id, username FROM users;
+SELECT username, email FROM users WHERE user_id = 1;
+SELECT * FROM category;
+SELECT name, slug FROM category;
+SELECT id, name FROM category WHERE id = 1;
+SELECT * FROM product;
+SELECT title, slug FROM product;
+SELECT id, title, author_id FROM product WHERE id = 1;
+SELECT * FROM product WHERE is_activated = true;
+SELECT * FROM product WHERE is_activated = false;
+SELECT * FROM product WHERE author_id = 1;
+SELECT * FROM product WHERE category_id = 1;
+SELECT title, description FROM product WHERE category_id = 1;
+SELECT * FROM product WHERE created_at BETWEEN '2022-01-01' AND '2022-12-31';
+SELECT * FROM product WHERE updated_at BETWEEN '2022-01-01' AND '2022-12-31';
+SELECT COUNT(*) FROM product;
+SELECT COUNT(*) FROM product WHERE is_activated = true;
+SELECT COUNT(*) FROM product WHERE is_activated = false;
+SELECT COUNT(*) FROM product WHERE author_id = 1;
+SELECT COUNT(*) FROM product WHERE category_id = 1;
+SELECT AVG(id) FROM product;
+SELECT MAX(id) FROM product;
+SELECT MIN(id) FROM product;
+SELECT SUM(id) FROM product;
+SELECT * FROM product ORDER BY id DESC;
+SELECT * FROM product ORDER BY id ASC;
+SELECT * FROM product ORDER BY title DESC;
+SELECT * FROM product ORDER BY title ASC;
+SELECT * FROM product ORDER BY created_at DESC;
+SELECT * FROM product ORDER BY created_at ASC;
+SELECT * FROM product ORDER BY updated_at DESC;
+SELECT * FROM product ORDER BY updated_at ASC;
+SELECT * FROM product ORDER BY is_activated DESC;
+SELECT * FROM product ORDER BY is_activated ASC;
+SELECT * FROM product ORDER BY author_id DESC;
+SELECT * FROM product ORDER BY author_id ASC;
+SELECT * FROM product ORDER BY category_id DESC;
+SELECT * FROM product ORDER BY category_id ASC;
+SELECT DISTINCT author_id FROM product;
+SELECT DISTINCT category_id FROM product;
+SELECT * FROM users WHERE username LIKE '%john%';
+SELECT * FROM users WHERE username NOT LIKE '%john%';
+SELECT * FROM users WHERE username LIKE 'joh_';
+SELECT * FROM users WHERE email LIKE '%gmail%';
+SELECT * FROM users WHERE email NOT LIKE '%gmail%';
+SELECT * FROM users WHERE email LIKE '%@gmail.com';
+SELECT * FROM product WHERE title LIKE '%table%';
+SELECT * FROM product WHERE title NOT LIKE '%table%';
+SELECT * FROM product WHERE title LIKE 'table_';
+SELECT * FROM product WHERE description LIKE '%table%';
+SELECT * FROM product WHERE description NOT LIKE '%table%;
+SELECT * FROM product WHERE description LIKE '%chair%';
+SELECT * FROM product WHERE description NOT LIKE '%chair%';
+SELECT * FROM product WHERE description LIKE 'chair_';
+SELECT * FROM product WHERE image LIKE '%jpg%';
+SELECT * FROM product WHERE image NOT LIKE '%jpg%';
+SELECT * FROM product WHERE image LIKE '%.jpg';
+SELECT * FROM category WHERE name LIKE '%furniture%';
+SELECT * FROM category WHERE name NOT LIKE '%furniture%';
+SELECT * FROM category WHERE name LIKE 'furniture_';
+SELECT * FROM category WHERE slug LIKE '%furniture%';
+SELECT * FROM category WHERE slug NOT LIKE '%furniture%';
+SELECT * FROM category WHERE slug LIKE 'furniture_';
+SELECT * FROM product WHERE title = 'Table';
+SELECT * FROM product WHERE title != 'Table';
+SELECT * FROM product WHERE description = 'Chair';
+SELECT * FROM product WHERE description != 'Chair';
+SELECT * FROM product WHERE author_id = 1 AND category_id = 1;
+SELECT * FROM product WHERE author_id = 1 OR category_id = 1;
+SELECT * FROM product WHERE author_id IN (1, 2, 3);
+SELECT * FROM product WHERE author_id NOT IN (1, 2, 3);
+SELECT * FROM product WHERE created_at >= '2022-01-01';
+SELECT * FROM product WHERE created_at <= '2022-12-31';
+SELECT * FROM product WHERE updated_at >= '2022-01-01';
+SELECT * FROM product WHERE updated_at <= '2022-12-31';
+SELECT * FROM product WHERE is_activated IS TRUE;
+SELECT * FROM product WHERE is_activated IS NOT TRUE;
+SELECT * FROM product WHERE is_activated IS FALSE;
+SELECT * FROM product WHERE is_activated IS NOT FALSE;
+SELECT * FROM product WHERE author_id IS NOT NULL;
+SELECT * FROM product WHERE author_id IS NULL;
+SELECT * FROM product WHERE category_id IS NOT NULL;
+SELECT * FROM product WHERE category_id IS NULL;
+SELECT * FROM product WHERE author_id = 1 LIMIT 10;
+SELECT * FROM product WHERE author_id = 1 LIMIT 10 OFFSET 5;
+SELECT * FROM product WHERE author_id = 1 LIMIT 5, 10;
+SELECT * FROM product WHERE author_id = 1 OFFSET 5 ROWS FETCH NEXT 10 ROWS ONLY;
+UPDATE users SET username = 'john_doe' WHERE user_id = 1;
+UPDATE product SET title = 'Furniture' WHERE id = 1;
+DELETE FROM users WHERE user_id = 1;
+DELETE FROM product WHERE id = 1;
+
+SELECT * FROM product
+JOIN users ON product.author_id = users.user_id;
+
+SELECT * FROM product
+JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+JOIN users ON product.author_id = users.user_id
+JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT JOIN users ON product.author_id = users.user_id
+LEFT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT JOIN users ON product.author_id = users.user_id
+RIGHT JOIN category ON product.category_id = category.id;
+
+SELECT * FROM product
+JOIN users ON product.author_id = users.user_id;
+
+SELECT * FROM product
+JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+JOIN users ON product.author_id = users.user_id
+JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT JOIN users ON product.author_id = users.user_id
+LEFT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT JOIN users ON product.author_id = users.user_id
+RIGHT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+INNER JOIN users ON product.author_id = users.user_id
+INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT INNER JOIN users ON product.author_id = users.user_id
+LEFT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT INNER JOIN users ON product.author_id = users.user_id
+RIGHT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+CROSS JOIN users
+CROSS JOIN category;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT JOIN users ON product.author_id = users.user_id
+CROSS JOIN category;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT JOIN users ON product.author_id = users.user_id
+CROSS JOIN category;
+
+SELECT product.title, users.username, category.name
+FROM product
+CROSS JOIN users
+LEFT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+CROSS JOIN users
+RIGHT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+INNER JOIN users ON product.author_id = users.user_id
+CROSS JOIN category;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT INNER JOIN users ON product.author_id = users.user_id
+CROSS JOIN category;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT INNER JOIN users ON product.author_id = users.user_id
+CROSS JOIN category;
+
+SELECT product.title, users.username, category.name
+FROM product
+CROSS JOIN users
+INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+CROSS JOIN users
+LEFT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+CROSS JOIN users
+RIGHT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT JOIN users ON product.author_id = users.user_id
+INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT JOIN users ON product.author_id = users.user_id
+INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT INNER JOIN users ON product.author_id = users.user_id
+LEFT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT INNER JOIN users ON product.author_id = users.user_id
+RIGHT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT INNER JOIN users ON product.author_id = users.user_id
+LEFT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT INNER JOIN users ON product.author_id = users.user_id
+RIGHT JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT JOIN users ON product.author_id = users.user_id
+LEFT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT JOIN users ON product.author_id = users.user_id
+LEFT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+LEFT JOIN users ON product.author_id = users.user_id
+RIGHT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+RIGHT JOIN users ON product.author_id = users.user_id
+RIGHT INNER JOIN category ON product.category_id = category.id;
+
+SELECT product.title, users.username, category.name
+FROM product
+INNER JOIN users ON product.author_id = users.user_id
+LEFT JOIN category ON product.category_id = category.id;
