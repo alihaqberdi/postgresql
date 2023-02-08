@@ -1,0 +1,59 @@
+# users table
+
+CREATE TABLE users (
+	user_id serial PRIMARY KEY,
+	username VARCHAR ( 50 ) UNIQUE NOT NULL,
+	password VARCHAR ( 50 ) NOT NULL,
+	email VARCHAR ( 255 ) UNIQUE NOT NULL,
+	created_on TIMESTAMP NOT NULL,
+        last_login TIMESTAMP 
+);
+
+
+# category table
+
+CREATE TABLE category (
+    id bigserial PRIMARY KEY,
+    name varchar(255) NOT NULL,
+    slug varchar(255) UNIQUE NOT NULL
+    );
+    
+    
+# Product table
+    
+CREATE TABLE product (
+    id bigserial PRIMARY KEY,
+    image text NOT NULL,
+    title varchar(550 ) NOT NULL,
+    slug varchar(255) UNIQUE NOT NULL,
+    description text NOT NULL,
+    created_at timestamptz NOT NULL DEFAULT NOW(),
+    updated_at timestamptz NOT NULL DEFAULT NOW(),
+    is_activated boolean NOT NULL DEFAULT true,
+    author_id integer NOT NULL,
+    category_id integer NOT NULL,
+    FOREIGN KEY (author_id) REFERENCES users(user_id),
+    FOREIGN KEY (category_id) REFERENCES category(id)
+);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
