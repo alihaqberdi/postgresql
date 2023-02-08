@@ -1,3 +1,5 @@
+#users table add 100 users
+
 insert into users (username, password, email, created_on, last_login) values ('lcollingham0', '4CevygS', 'stansey0@dyndns.org', '10/23/2012', '7/2/2021');
 insert into users (username, password, email, created_on, last_login) values ('ashobrook2', 'O3tgR1L1Oe1', 'kbyway2@delicious.com', '7/17/2021', '11/7/2021');
 insert into users (username, password, email, created_on, last_login) values ('zantuoni3', '42DaS7h7V', 'mdenholm3@wsj.com', '10/28/2014', '2/18/2021');
@@ -98,3 +100,19 @@ insert into users (username, password, email, created_on, last_login) values ('t
 insert into users (username, password, email, created_on, last_login) values ('odomek2p', 'MJuzSi57tAbI', 'kberryman2p@trellian.com', '11/7/2017', '1/10/2022');
 insert into users (username, password, email, created_on, last_login) values ('aklagges2q', 'HtT1kWQLvgv', 'lfutty2q@desdev.cn', '3/27/2011', '5/8/2022');
 insert into users (username, password, email, created_on, last_login) values ('bbacks2r', 'lJhybcQE', 'gtomsu2r@so-net.ne.jp', '2/10/2018', '2/16/2021');
+
+
+
+#categort table add 10 category
+insert into category (name, slug) values ('Pontiac', 'Pontiac');
+insert into category (name, slug) values ('Isuzu', 'Isuzu');
+insert into category (name, slug) values ('GMC', 'GMC');
+insert into category (name, slug) values ('Suzuki', 'Suzuki');
+insert into category (name, slug) values ('Audi', 'Audi');
+insert into category (name, slug) values ('Ford', 'Ford');
+insert into category (name, slug) values ('Mercedes-Benz', 'Mercedes-Benz');
+insert into category (name, slug) values ('Hyundai', 'Hyundai');
+insert into category (name, slug) values ('Honda', 'Honda');
+insert into category (name, slug) values ('Mazda', 'Mazda');
+
+
